@@ -17,6 +17,8 @@ interface DataTableColumnHeaderProps<TData, TValue>
   title: string;
 }
 
+// This component is the header of a column in the data table that allows the user to sort the table data by the column.
+// In my application, we can sort publication data by ascending or descending order.
 export function DataTableColumnHeader<TData, TValue>({
   column,
   title,

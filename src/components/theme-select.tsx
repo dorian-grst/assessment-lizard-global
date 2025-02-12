@@ -3,6 +3,7 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import { Button } from './shadcn/button';
 
 export function ThemeSelect() {
+  // Get the theme from localStorage or the system preference
   const [theme, setTheme] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       if ('theme' in localStorage) {
@@ -15,6 +16,7 @@ export function ThemeSelect() {
     return 'light';
   });
 
+  // Set the theme in localStorage and toggle the class on the html
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
 
@@ -25,6 +27,7 @@ export function ThemeSelect() {
     }
   }, [theme]);
 
+  // Toggle the theme
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };

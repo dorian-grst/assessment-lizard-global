@@ -20,6 +20,7 @@ interface DataTablePaginationProps<TData> {
   table: Table<TData>;
 }
 
+// Here we have the pagination component that allows the user to navigate through the pages of the table and change the number of rows per page.
 export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {

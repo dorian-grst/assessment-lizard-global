@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Post } from '@/lib/schema';
 
+// Fetch posts from the API
 const fetchPosts = async (): Promise<Post[]> => {
   const response = await fetch('/api/posts');
   if (!response.ok) {
@@ -10,6 +11,7 @@ const fetchPosts = async (): Promise<Post[]> => {
   return data.posts;
 };
 
+// Extract categories from posts
 const extractCategories = (posts: Post[]) => {
   const categorySet = new Set<string>();
   posts.forEach((post) => {
@@ -23,6 +25,7 @@ const extractCategories = (posts: Post[]) => {
   }));
 };
 
+// Hook to fetch and format posts
 export function usePosts() {
   return useQuery({
     queryKey: ['posts'],
@@ -37,7 +40,7 @@ export function usePosts() {
   });
 }
 
-// Format date to dd/mm/yy
+// Format date to dd/mm/yy because the API returns it in a non user-friendly format
 export function formatDate(publishDate: string): string {
   const date = new Date(publishDate);
   const day = String(date.getDate()).padStart(2, '0');

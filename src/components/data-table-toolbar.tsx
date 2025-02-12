@@ -13,6 +13,7 @@ interface DataTableToolbarProps<TData> {
   table: Table<TData>;
 }
 
+// This component is the toolbar for the data table that contains the search input that can filter the table data and the category filter.
 export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
@@ -22,12 +23,14 @@ export function DataTableToolbar<TData>({
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
+        {/* The search input */}
         <Input
           placeholder="Search..."
           value={(table.getState().globalFilter as string) ?? ''}
           onChange={(event) => table.setGlobalFilter(event.target.value)}
           className="h-8 w-[150px] lg:w-[250px]"
         />
+        {/* The category filter */}
         {table.getColumn('categories') && (
           <DataTableFacetedFilter
             column={table.getColumn('categories')}
@@ -35,6 +38,7 @@ export function DataTableToolbar<TData>({
             options={categories}
           />
         )}
+        {/* The reset category filter button when almost one category is selected */}
         {isFiltered && (
           <Button
             variant="ghost"

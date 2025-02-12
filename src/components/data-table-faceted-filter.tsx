@@ -27,6 +27,7 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   }[];
 }
 
+// This is the category filter component that allows the user to filter the table data by categories.
 export function DataTableFacetedFilter<TData, TValue>({
   column,
   title,

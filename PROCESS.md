@@ -47,6 +47,7 @@ I started by implementing the initial prerequisites using `React Query`, display
 Next, I added pagination and category filtering:
 
 1. [x] Implement a category filter—this can be single or multi-select.
+1. [x] Persist filter state in the query string.
 1. [x] Implement pagination—this can be traditional numbered pages or a "load more" button.
 
 I also included the ability to sort posts by publication date in ascending or descending order, add or remove columns from the table, and choose the number of posts to display per page.
@@ -67,3 +68,19 @@ Additionally, I incorporated animations using `GSAP` to make the application mor
 1. [x] Use client-side routing to create a "detail" page.
 
 I took the opportunity to add a custom scrollbar to enhance the app's aesthetics and implemented `Skeleton` loading states to prevent users from seeing a blank screen during data fetching.
+
+Also, I added a small GitHub Action workflow to lint & build the project on every push or pull request to the main branch.
+
+I merged this [PR](https://github.com/dorian-grst/assessment-lizard-global/pull/2) to show you how I usually work with a team.
+
+Finally, I made sure to include comments throughout the codebase to explain my thought process and approach.
+
+## 6. Potential Improvements
+
+If I had more time, I would have liked to:
+
+- [ ] Add tests using `Jest` and `React Testing Library`.
+- [ ] Use a CSS preprocessor or CSS-in-JS instead of plain CSS ?
+- [ ] Improve the accessibility of the application.
+- [ ] Optimize the performance of the application.
+- [ ] Refactor the code to make it cleaner and more maintainable.

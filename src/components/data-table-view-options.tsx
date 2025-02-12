@@ -16,6 +16,7 @@ interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
 
+// This component is a dropdown menu that allows the user to toggle the visibility of columns
 export function DataTableViewOptions<TData>({
   table,
 }: DataTableViewOptionsProps<TData>) {

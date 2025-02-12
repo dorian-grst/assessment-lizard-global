@@ -134,11 +134,13 @@ export function DataTable<TData extends { id: string | number }, TValue>({
 
   return (
     <div className="flex overflow-hidden flex-col gap-8 w-full p-1">
+      {/* Table toolbar */}
       <DataTableToolbar table={table} />
       <div
         ref={tableRef}
         className="border-border border-1 rounded-md overflow-auto custom-scrollbar"
       >
+        {/* The main table */}
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -156,6 +158,7 @@ export function DataTable<TData extends { id: string | number }, TValue>({
               </TableRow>
             ))}
           </TableHeader>
+          {/* Show skeleton loader if data is loading */}
           {isAnimating || isLoading ? (
             <LoadingSkeleton />
           ) : (

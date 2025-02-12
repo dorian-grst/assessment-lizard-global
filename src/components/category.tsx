@@ -5,6 +5,7 @@ interface CategoryProps {
   text: string;
 }
 
+// Simple component that displays a category badge for the details page.
 function Category({ text }: CategoryProps) {
   return <Badge className="badge">{text}</Badge>;
 }

@@ -20,6 +20,7 @@ function Detail() {
 
   const cardRef = useRef(null);
 
+  // Animation
   useEffect(() => {
     gsap.fromTo(
       cardRef.current,
