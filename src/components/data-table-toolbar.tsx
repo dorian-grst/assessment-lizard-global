@@ -30,25 +30,27 @@ export function DataTableToolbar<TData>({
           onChange={(event) => table.setGlobalFilter(event.target.value)}
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {/* The category filter */}
-        {table.getColumn('categories') && (
-          <DataTableFacetedFilter
-            column={table.getColumn('categories')}
-            title="Categories"
-            options={categories}
-          />
-        )}
-        {/* The reset category filter button when almost one category is selected */}
-        {isFiltered && (
-          <Button
-            variant="ghost"
-            onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3"
-          >
-            Reset
-            <X />
-          </Button>
-        )}
+        <div className="flex flex-row gap-2">
+          {/* The category filter */}
+          {table.getColumn('categories') && (
+            <DataTableFacetedFilter
+              column={table.getColumn('categories')}
+              title="Categories"
+              options={categories}
+            />
+          )}
+          {/* The reset category filter button when almost one category is selected */}
+          {isFiltered && (
+            <Button
+              variant="ghost"
+              onClick={() => table.resetColumnFilters()}
+              className="h-8 px-2 lg:px-3 hidden sm:flex"
+            >
+              Reset
+              <X />
+            </Button>
+          )}
+        </div>
       </div>
       <DataTableViewOptions table={table} />
     </div>

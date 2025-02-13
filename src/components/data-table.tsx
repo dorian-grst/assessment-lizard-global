@@ -132,10 +132,10 @@ export function DataTable<TData extends { id: string | number }, TValue>({
   );
 
   return (
-    <div className="flex overflow-hidden flex-col gap-8 w-full p-1">
+    <main className="flex overflow-hidden flex-col gap-8 w-full p-1">
       {/* Table toolbar */}
       <DataTableToolbar table={table} />
-      <div
+      <section
         ref={tableRef}
         className="border-border border-1 rounded-md overflow-y-auto custom-scrollbar"
       >
@@ -204,8 +204,8 @@ export function DataTable<TData extends { id: string | number }, TValue>({
             </TableBody>
           )}
         </Table>
-      </div>
+      </section>
       <DataTablePagination table={table} />
-    </div>
+    </main>
   );
 }

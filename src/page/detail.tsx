@@ -29,15 +29,20 @@ function Detail() {
     );
   }, []);
 
+  const handleCategoryClick = (category: string) => {
+    const formattedCategory = category.toLowerCase().replace(/\s+/g, '-'); // Remplace les espaces par des tirets
+    navigate(`/?categories=${formattedCategory}`);
+  };
+
   const returnToHome = () => {
     navigate('/');
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <div ref={cardRef} className="rounded-md border p-6 w-fit">
-        <div className="flex items-center gap-6">
-          <Avatar className="w-24 h-24">
+    <main className="flex flex-col gap-6">
+      <article ref={cardRef} className="rounded-md border p-6 w-fit">
+        <figure className="flex items-center gap-6">
+          <Avatar className="w-16 h-16">
             <AvatarImage
               className="rounded-full"
               src={post.author.avatar}
@@ -45,7 +50,7 @@ function Detail() {
             />
             <AvatarFallback>{post.author.name[0]}</AvatarFallback>
           </Avatar>
-          <div className="flex flex-col">
+          <figcaption className="flex flex-col">
             <h1 className="text-2xl font-bold">{post.author.name}</h1>
             <h2 className="text-gray-500">
               @{post.author.name.toLowerCase().replace(' ', '_')}
@@ -53,24 +58,30 @@ function Detail() {
             <p className="text-sm text-gray-600">
               {formatDate(post.publishDate)}
             </p>
-          </div>
-        </div>
-        <div className="mt-6">
+          </figcaption>
+        </figure>
+        <section className="mt-6">
           <h2 className="text-xl font-semibold">{post.title}</h2>
           <p className="text-gray-600 mt-2">{post.summary}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Catégories">
             {post.categories.map((category) => (
-              <Badge variant={'outline'} key={category.id}>
-                {category.name}
-              </Badge>
+              <li key={category.id}>
+                <Badge
+                  variant={'outline'}
+                  className="cursor-pointer"
+                  onClick={() => handleCategoryClick(category.name)}
+                >
+                  {category.name}
+                </Badge>
+              </li>
             ))}
-          </div>
-        </div>
-      </div>
+          </ul>
+        </section>
+      </article>
       <Button onClick={returnToHome} className="w-fit cursor-pointer">
         <ArrowLeftIcon /> Back
       </Button>
-    </div>
+    </main>
   );
 }
 

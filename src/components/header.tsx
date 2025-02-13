@@ -3,7 +3,7 @@ import Navbar from './navbar';
 
 function Header() {
   return (
-    <header className="flex flex-row justify-between h-1/12 w-full">
+    <header className="flex flex-row justify-between h-1/12 w-full gap-8">
       <div className='className="flex flex-col gap-2'>
         <h2 className="text-2xl font-bold tracking-tight">
           Assessment Lizard Global
