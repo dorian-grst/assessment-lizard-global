@@ -70,10 +70,13 @@ Additionally, I incorporated animations using `GSAP` to make the application mor
 I took the opportunity to add a custom scrollbar to enhance the app's aesthetics and implemented `Skeleton` loading states to prevent users from seeing a blank screen during data fetching.
 
 Also, I added a small GitHub Action workflow to lint & build the project on every push or pull request to the main branch.
+It will deploy the application to GitHub Pages if the build is successful [here](https://dorian-grst.github.io/assessment-lizard-global)
 
 I merged this [PR](https://github.com/dorian-grst/assessment-lizard-global/pull/2) to show you how I usually work with a team.
 
-Finally, I made sure to include comments throughout the codebase to explain my thought process and approach.
+I made sure to include comments throughout the codebase to explain my thought process and approach.
+
+Finally I added meta tags for SEO.
 
 ## 6. Potential Improvements
 

@@ -18,7 +18,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import Layout from './components/layout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const basename =
-  process.env.NODE_ENV === 'production' ? '/assessment-lizard-global' : '';
+  process.env.NODE_ENV === 'production' ? '/assessment-lizard-global/' : '';
 const root = createRoot(document.getElementById('root')!);
 const queryClient = new QueryClient();
 root.render(
