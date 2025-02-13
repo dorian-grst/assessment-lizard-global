@@ -1,6 +1,6 @@
 import React from 'react';
 import { DataTable } from '../components/data-table';
-import { columns } from '@/components/shadcn/columns';
+import { columns } from '../components/columns';
 import { usePosts } from '../hooks/use-posts';
 
 function Home() {

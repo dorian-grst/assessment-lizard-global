@@ -38,7 +38,7 @@ export function DataTableFacetedFilter<TData, TValue>({
 
   return (
     <Popover>
-      <PopoverTrigger asChild className="hidden lg:flex">
+      <PopoverTrigger asChild className="flex">
         <Button variant="outline" size="sm" className="h-8 border-dashed">
           <PlusCircle />
           {title}
@@ -52,7 +52,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                 {selectedValues.size}
               </Badge>
               <div className="hidden space-x-1 lg:flex">
-                {selectedValues.size > 2 ? (
+                {selectedValues.size > 3 ? (
                   <Badge
                     variant="secondary"
                     className="rounded-sm px-1 font-normal"

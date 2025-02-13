@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ColumnDef,
   ColumnFiltersState,
-  SortingState,
   VisibilityState,
   flexRender,
   getCoreRowModel,
@@ -138,15 +137,19 @@ export function DataTable<TData extends { id: string | number }, TValue>({
       <DataTableToolbar table={table} />
       <div
         ref={tableRef}
-        className="border-border border-1 rounded-md overflow-auto custom-scrollbar"
+        className="border-border border-1 rounded-md overflow-y-auto custom-scrollbar"
       >
         {/* The main table */}
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} colSpan={header.colSpan}>
+                {headerGroup.headers.map((header, index) => (
+                  <TableHead
+                    key={header.id}
+                    colSpan={header.colSpan}
+                    className={index === 0 ? 'pl-4' : ''}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -175,8 +178,11 @@ export function DataTable<TData extends { id: string | number }, TValue>({
                     className="cursor-pointer h-[100px]"
                     data-state={row.getIsSelected() && 'selected'}
                   >
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>
+                    {row.getVisibleCells().map((cell, cellIndex) => (
+                      <TableCell
+                        key={cell.id}
+                        className={cellIndex === 0 ? 'pl-4' : ''}
+                      >
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext(),

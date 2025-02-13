@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { DataTableColumnHeader } from '../data-table-column-header';
+import { DataTableColumnHeader } from './data-table-column-header';
 import React from 'react';
 import { Author, Category, Post } from '@/lib/schema';
 
@@ -7,12 +7,23 @@ export const columns: ColumnDef<Post>[] = [
   {
     accessorFn: (row) => row.author.name,
     id: 'author',
-    header: 'Author',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        className="md:block hidden"
+        title="Author"
+      />
+    ),
     cell: ({ row }) => {
       const author = row.original.author as Author;
       return <span className="flex max-w-[150px]">{author.name}</span>;
     },
-    enableSorting: false,
+    sortingFn: (rowA, rowB, columnId) => {
+      const authorA = rowA.original.author.name;
+      const authorB = rowB.original.author.name;
+      return authorA > authorB ? 1 : -1;
+    },
+    enableSorting: true,
   },
   {
     accessorKey: 'title',
