@@ -8,11 +8,7 @@ export const columns: ColumnDef<Post>[] = [
     accessorFn: (row) => row.author.name,
     id: 'author',
     header: ({ column }) => (
-      <DataTableColumnHeader
-        column={column}
-        className="md:block hidden"
-        title="Author"
-      />
+      <DataTableColumnHeader column={column} title="Author" />
     ),
     cell: ({ row }) => {
       const author = row.original.author as Author;

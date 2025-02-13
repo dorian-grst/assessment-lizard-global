@@ -8,7 +8,9 @@ function Header() {
         <h2 className="text-2xl font-bold tracking-tight">
           Assessment Lizard Global
         </h2>
-        <p className="text-muted-foreground">Here is my work !</p>
+        <p className="text-muted-foreground hidden sm:block">
+          Here is my work !
+        </p>
       </div>
       <Navbar />
     </header>
