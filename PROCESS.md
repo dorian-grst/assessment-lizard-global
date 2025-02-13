@@ -1,89 +1,118 @@
-# I wanted to write all my process in this file.
+# Development Process Documentation
 
-## 1. Switch from yarn to npm
+This document outlines the steps I took during the development of this project, including decisions, challenges, and improvements made along the way.
 
-Yarm was used in the project. I switched to npm because I've never used yarn before and I'm more familiar with npm. I thought it would be better to use npm in this project.
+---
 
-Update, I switched to pnpm because it's faster than npm and yarn. You can start the project with the following command :
+## 1. Package Manager: Switching from Yarn to npm (and later to pnpm)
 
-```bash
-$ pnpm run start
+Initially, the project used **Yarn** as its package manager. However, since I am more familiar with **npm**, I decided to switch to it for better workflow efficiency. Later, I migrated to **pnpm** due to its faster performance compared to both npm and Yarn. To start the project, use the following command:
+
+```
+pnpm install
+pnpm run start
 ```
 
-## 2. Bump versions of dependencies to latest versions and fix vulnerabilities
+---
 
-This project was created in 2021. I bumped the versions of the dependencies to the latest versions and fixed the vulnerabilities because it's a blank project, so I thought it would be better to start on a fresh note.
+## 2. Dependency Updates and Security Fixes
 
-I removed the "react-scripts" dependency because it caused conflicts with others packages. So I checked the [npmjs page](https://www.npmjs.com/package/react-scripts?activeTab=readme) of the package, then I clicked on the [facebook github repository](https://github.com/facebook/create-react-app) and I saw that the package was deprecated that's why I removed it.
+The project was originally created in 2021, so many dependencies were outdated. To ensure a stable and secure foundation, I updated all dependencies to their latest versions and resolved any vulnerabilities.
 
-To run my code easily, I added `vite` as a development dependency.
+During this process, I discovered that the `react-scripts` package was causing conflicts with other dependencies. After investigating its [npmjs page](https://www.npmjs.com/package/react-scripts?activeTab=readme) and the [GitHub repository](https://github.com/facebook/create-react-app), I learned that the package is deprecated. As a result, I removed it and replaced it with **Vite**, a modern build tool that significantly improves development speed and performance.
 
-## 3. Switch from JavaScript to TypeScript
+---
 
-I switched from JavaScript to TypeScript because I am more familiar with TypeScript and I think it's better to use TypeScript in a project like this. It will help me to write better code.
+## 3. Transition from JavaScript to TypeScript
 
-To do that I installed the following dependencies and created a `tsconfig.json` file using the following commands :
+To enhance code quality and maintainability, I migrated the project from **JavaScript** to **TypeScript**. TypeScript provides static typing, which helps catch errors early and improves developer productivity.
 
-```bash
-$ npm install --save typescript @types/react @types/react-dom
-$ npx tsc --init
+To achieve this, I installed the necessary TypeScript dependencies and initialized a `tsconfig.json` file using the following commands:
+
+```
+npm install --save typescript @types/react @types/react-dom
+npx tsc --init
 ```
 
-Then, I renamed the files with `.js` & `.jsx` extensions to `.ts` & `.tsx` extensions.
+I then renamed all `.js` and `.jsx` files to `.ts` and `.tsx` respectively, ensuring the project was fully compatible with TypeScript.
 
-## 4. Setup TailwindCSS & Shadcn
+---
 
-I added [TailwindCSS](https://tailwindcss.com/) and [Shadcn](https://ui.shadcn.com/) to the project because I like to use them in my projects. TailwindCSS is a utility-first CSS framework and Shadcn is a component library. I think they will help me to build the project faster.
+## 4. Setting Up TailwindCSS and Shadcn
 
-## 5. Create the Application
+To streamline the styling process, I integrated **TailwindCSS**, a utility-first CSS framework, and **Shadcn**, a component library. These tools allowed me to build the UI quickly and efficiently while maintaining a consistent design system.
 
-Having prior experience in design, I began developing the application with a clear vision of what I wanted to achieve.
+- **TailwindCSS**: Provides a robust set of utility classes for rapid prototyping and responsive design.
+- **Shadcn**: Offers pre-built, customizable components that align with modern design standards.
 
-I started by implementing the initial prerequisites using `React Query`, displaying a simple data table:
+---
 
-1. [x] Retrieve data from the mock API.
-1. [x] Output the data in a list, including relevant properties for a list view.
+## 5. Application Development
 
-Next, I added pagination and category filtering:
+### Initial Setup and Data Fetching
 
-1. [x] Implement a category filter—this can be single or multi-select.
-1. [x] Persist filter state in the query string.
-1. [x] Implement pagination—this can be traditional numbered pages or a "load more" button.
+With a clear vision of the application's design and functionality, I began by implementing the core features:
 
-I also included the ability to sort posts by publication date in ascending or descending order, add or remove columns from the table, and choose the number of posts to display per page.
+1. **Data Fetching**: Retrieved data from the mock API using **React Query** and displayed it in a table format.
+2. **List View**: Rendered relevant properties for each item in the list.
 
-In the meantime, I added routing for the detail page and a theme switcher, which wasn't explicitly required but I found it interesting to implement.
+### Advanced Features
 
-I also made sure to use semantic HTML as much as possible:
+Next, I implemented additional functionalities to enhance the user experience:
 
-1. [x] Use semantic markup where applicable.
+1. **Category Filtering**: Added a multi-select filter for categories, with the filter state persisted in the URL query string.
+2. **Pagination**: Implemented pagination to allow users to navigate through the data.
+3. **Sorting**: Enabled sorting by publication date (ascending or descending).
+4. **Column Customization**: Allowed users to hide columns from the table.
+5. **Rows Per Page**: Added an option to choose the number of items displayed per page.
+6. **Routing**: Added client-side routing for a detail page to display more information about each item.
+7. **Responsive Design**: Designed a mobile-first layout using TailwindCSS, ensuring the application is fully responsive.
+8. **Semantic HTML**: Ensured the use of semantic markup for improved accessibility and SEO.
 
-Once these features were in place, I began working on the responsive design, which is an important aspect for me and very straightforward to implement with TailwindCSS, as it follows a mobile-first approach:
+### Additional Enhancements
 
-1. [x] Create a responsive layout using HTML and CSS.
+While not explicitly required, I incorporated the following features to improve the application:
 
-Additionally, I incorporated animations using `GSAP` to make the application more dynamic, such as when landing on the main page or clicking on a table row to navigate to the detail page.
+1. **Theme Switcher**: Implemented a dark/light theme toggle for better user customization.
+2. **Continuous Integration**: Set up GitHub Actions for automated tests (prettier & build) and deployment.
 
-1. [x] Include animated transitions between application states, e.g., when filtering.
-1. [x] Use client-side routing to create a "detail" page.
+### Animations and User Experience
 
-I took the opportunity to add a custom scrollbar to enhance the app's aesthetics and implemented `Skeleton` loading states to prevent users from seeing a blank screen during data fetching.
+To make the application more dynamic and engaging, I integrated animations using **GSAP** (GreenSock Animation Platform). These animations include:
 
-Also, I added a small GitHub Action workflow to lint & build the project on every push or pull request to the main branch.
-It will deploy the application to GitHub Pages if the build is successful [here](https://dorian-grst.github.io/assessment-lizard-global)
+- Smooth transitions when landing on the main page.
+- Animated row clicks for navigating to the detail page.
 
-I merged this [PR](https://github.com/dorian-grst/assessment-lizard-global/pull/2) to show you how I usually work with a team.
+Additionally, I implemented **Skeleton loading states** to provide visual feedback during data fetching and added a **custom scrollbar** to enhance the overall aesthetics.
 
-I made sure to include comments throughout the codebase to explain my thought process and approach.
+### Deployment and Collaboration
 
-Finally I added meta tags for SEO.
+I set up a **GitHub Actions workflow** to automate linting and building the project on every push or pull request to the `main` branch. Successful builds on main are deployed to **GitHub Pages**, accessible [here](https://dorian-grst.github.io/assessment-lizard-global).
+
+To demonstrate my collaborative workflow, I created and merged this [pull request](https://github.com/dorian-grst/assessment-lizard-global/pull/2).
+
+### Code Documentation
+
+Throughout the codebase, I added comments to explain my thought process and implementation decisions, ensuring the project is easy to understand and maintain.
+
+### SEO Optimization
+
+Finally, I included **meta tags** to improve the application's search engine visibility.
+
+---
 
 ## 6. Potential Improvements
 
-If I had more time, I would have liked to:
+If given more time, I would focus on the following areas to further enhance the application:
 
-- [ ] Add tests using `Jest` and `React Testing Library`.
-- [ ] Use a CSS preprocessor or CSS-in-JS instead of plain CSS ?
-- [ ] Improve the accessibility of the application.
-- [ ] Optimize the performance of the application.
-- [ ] Refactor the code to make it cleaner and more maintainable.
+1. **Testing**: Add unit and integration tests using **Jest** and **React Testing Library**.
+2. **Styling**: Explore using a CSS preprocessor (e.g., **Sass**) or CSS-in-JS for more advanced styling capabilities.
+3. **Accessibility**: Conduct a thorough accessibility audit and implement improvements to ensure the application is fully inclusive.
+4. **Performance Optimization**: Analyze and optimize the application's performance, particularly for large datasets.
+5. **Code Refactoring**: Refactor the codebase to improve readability, maintainability, and scalability.
+
+---
+
+## Conclusion
+
+This project was an excellent opportunity to showcase my skills in front-end development, problem-solving, and attention to detail. By leveraging modern tools and best practices, I was able to deliver a robust, user-friendly application that meets the project requirements while incorporating additional enhancements to elevate the user experience.
